@@ -765,6 +765,7 @@ static struct crypto_instance *crypto_authenc_esn_alloc(struct rtattr **tb)
 		     enc->cra_driver_name) >= CRYPTO_MAX_ALG_NAME)
 		goto err_drop_enc;
 
+<<<<<<< HEAD
 	inst->alg.cra_flags = CRYPTO_ALG_TYPE_AEAD;
 	inst->alg.cra_flags |= enc->cra_flags & CRYPTO_ALG_ASYNC;
 	inst->alg.cra_priority = enc->cra_priority *
@@ -772,6 +773,15 @@ static struct crypto_instance *crypto_authenc_esn_alloc(struct rtattr **tb)
 	inst->alg.cra_blocksize = enc->cra_blocksize;
 	inst->alg.cra_alignmask = auth_base->cra_alignmask | enc->cra_alignmask;
 	inst->alg.cra_type = &crypto_aead_type;
+=======
+	inst->alg.base.cra_flags = enc->cra_flags & CRYPTO_ALG_ASYNC;
+	inst->alg.base.cra_priority = enc->cra_priority * 10 +
+				      auth_base->cra_priority;
+	inst->alg.base.cra_blocksize = enc->cra_blocksize;
+	inst->alg.base.cra_alignmask = auth_base->cra_alignmask |
+				       enc->cra_alignmask;
+	inst->alg.base.cra_ctxsize = sizeof(struct crypto_authenc_esn_ctx);
+>>>>>>> 5e4b8c1fcc70... crypto: aead - Remove CRYPTO_ALG_AEAD_NEW flag
 
 	inst->alg.cra_aead.ivsize = enc->cra_ablkcipher.ivsize;
 	inst->alg.cra_aead.maxauthsize = auth->digestsize;
