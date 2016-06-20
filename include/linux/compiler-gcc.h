@@ -105,6 +105,16 @@
 #define gcc_header(x) _gcc_header(x)
 #include gcc_header(__GNUC__)
 
+/* gcc version specific checks */
+
+#if GCC_VERSION >= 40500
+
+#ifndef __CHECKER__
+#ifdef LATENT_ENTROPY_PLUGIN
+#define __latent_entropy __attribute__((latent_entropy))
+#endif
+#endif
+
 #if !defined(__noclone)
 #define __noclone	/* not needed */
 #endif
