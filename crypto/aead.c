@@ -285,7 +285,8 @@ struct crypto_instance *aead_geniv_alloc(struct crypto_template *tmpl,
 	if (IS_ERR(algt))
 		return ERR_PTR(err);
 
-	if ((algt->type ^ CRYPTO_ALG_TYPE_AEAD) & algt->mask)
+	if ((algt->type ^ (CRYPTO_ALG_TYPE_AEAD | CRYPTO_ALG_GENIV)) &
+	    algt->mask)
 		return ERR_PTR(-EINVAL);
 
 	name = crypto_attr_alg_name(tb[1]);
