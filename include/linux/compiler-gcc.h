@@ -115,6 +115,8 @@
 #endif
 #endif
 
+#endif /* GCC_VERSION >= 40500 */
+
 #if !defined(__noclone)
 #define __noclone	/* not needed */
 #endif
