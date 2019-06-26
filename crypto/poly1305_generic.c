@@ -310,5 +310,5 @@ module_exit(poly1305_mod_exit);
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Martin Willi <martin@strongswan.org>");
 MODULE_DESCRIPTION("Poly1305 authenticator");
-MODULE_ALIAS_CRYPTO("poly1305");
-MODULE_ALIAS_CRYPTO("poly1305-generic");
+MODULE_ALIAS("poly1305");
+MODULE_ALIAS("poly1305-generic");
