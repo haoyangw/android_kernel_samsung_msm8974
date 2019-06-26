@@ -328,10 +328,7 @@ include $(srctree)/scripts/Kbuild.include
 
 export FASTER_FLAGS := \
 	-O3 \
-	-DNDEBUG -g0 \
-	-Werror \
-	-Wno-shift-overflow \
-	-Wno-unused-const-variable
+	-DNDEBUG -g0
 
 # Make variables (CC, etc...)
 
